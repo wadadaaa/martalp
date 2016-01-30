@@ -1,0 +1,74 @@
+{% load wagtailimages_tags wagtailembeds_tags %}
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Выбираем мультиварку</h2>
+                    <h3 class="section-subheading text-muted">Каталог моделей.</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for product_item in product_items %}
+                <div class="col-md-4 col-sm-6 portfolio-item">
+{#                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">#}
+                    <a href="#{{ product_item.id }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+{#                        <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">#}
+                        {% image product_item.image width-400 as product_image %}
+                        <img src="{{ product_image.url }}" class="img-responsive">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ product_item.caption }}</h4>
+{#                        <p class="text-muted">{{ product_item.description }}</p>#}
+                    </div>
+                </div>
+                {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                {% for product_item in product_items %}
+
+  <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal modal fade" id="{{ product_item.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>{{ product_item.caption }}</h2>
+                            <p class="item-intro text-muted">{{ product_item.caption }}.</p>
+                            {% image product_item.image width-400 as product_image %}
+                            <img class="img-responsive img-centered" src="{{ product_image.url }}" alt="">
+                            <p>{{ product_item.description }}</p>
+                            <div class="flex-video"><iframe width="560" height="315" src="{{ product_item.video }}" frameborder="0" allowfullscreen=""></iframe></div>
+
+                            <p>
+{#                                <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of them for free, courtesy of <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>, or you can purchase the 1500 icon set <a href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>#}
+{#                            <ul class="list-inline">#}
+                                <li><strong>обычная цена<h1>{{ product_item.price }}₪</h1></strong></li>
+                                <li style="color: #e74c3c;"><strong>цена для вас<h1>{{ product_item.sale }}₪</h1></strong></li>
+{#                                <li>Category: Graphic Design</li>#}
+                            </ul>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                {% endfor %}
+

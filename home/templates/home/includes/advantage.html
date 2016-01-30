@@ -1,0 +1,41 @@
+   {% load wagtailimages_tags wagtailembeds_tags %}
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">МАРТА</h2>
+                    <h3 class="section-subheading text-muted">Преимущества мультиварок</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        {% for advantage_item in advantage_items %}
+                        <li>
+                            <div class="timeline-image">
+                                {% image advantage_item.image width-400 as image %}
+                                <img class="img-circle img-responsive" src="{{ image.url }}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">{{ advantage_item.caption }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ advantage_item.description }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Будь
+                                    <br>частью
+                                    <br>лучшего</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
