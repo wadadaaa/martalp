@@ -1,13 +1,13 @@
 from .base import *
 
-
-DEBUG = False
-
-try:
-    from .local import *
-except ImportError:
-    pass
-
+#
+# DEBUG = False
+#
+# try:
+#     from .local import *
+# except ImportError:
+#     pass
+#
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
@@ -18,3 +18,4 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
