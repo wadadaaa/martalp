@@ -1,13 +1,6 @@
 from .base import *
 
-#
-# DEBUG = False
-#
-# try:
-#     from .local import *
-# except ImportError:
-#     pass
-#
+DEBUG = False
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
