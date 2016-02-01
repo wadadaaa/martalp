@@ -9,6 +9,9 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
     InlinePanel, PageChooserPanel, StreamFieldPanel
+
+from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -152,6 +155,7 @@ class ProductItem(models.Model):
     )
     caption = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255, blank=True)
+    description = RichTextField()
     video = models.URLField("Embed video URL", blank=True)
     price = models.CharField(max_length=255)
     sale = models.CharField(max_length=255, blank=True)
