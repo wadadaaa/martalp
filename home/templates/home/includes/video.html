@@ -1,7 +1,7 @@
 {% load wagtailimages_tags wagtailembeds_tags %}
 
     <!-- Video Section -->
-                {% for video_item in video_items %}
+{% for video_item in video_items %}
 
     <section id="video">
         <div class="container">
@@ -11,9 +11,11 @@
                     <h3 class="section-subheading text-muted">{{ video_item.description }}</h3>
                 </div>
             </div>
-            <div class="row text-center">
-                    <div><iframe width="560" height="315" src="{{ video_item.embed_url }}" frameborder="0" allowfullscreen=""></iframe></div>
+            <div class="row text-center" style="box-shadow: 0px 4px 40px 3px rgba(0, 0, 0, 0.5);">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item"  src="{{ video_item.embed_url }}"></iframe>
+                </div>
             </div>
         </div>
     </section>
-                {% endfor %}
+{% endfor %}
