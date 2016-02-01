@@ -47,6 +47,8 @@
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
                             <h2>{{ product_item.caption }}</h2>
+                            <a href="tel:0549438101" ><button type="button" class="btn btn-xl"><i class="fa fa-phone"></i>  0549438101</button></a>
+
                             <p class="item-intro text-muted">{{ product_item.caption }}.</p>
                             {% image product_item.image width-400 as product_image %}
                             <img class="img-responsive img-centered" src="{{ product_image.url }}" alt="">
