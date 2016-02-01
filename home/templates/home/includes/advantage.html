@@ -1,4 +1,4 @@
-   {% load wagtailimages_tags wagtailembeds_tags %}
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags %}
 
     <section id="about">
         <div class="container">
@@ -22,7 +22,7 @@
                                     <h4 class="subheading">{{ advantage_item.caption }}</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">{{ advantage_item.description }}</p>
+                                    <p class="text-muted">{{ advantage_item.description|richtext }}</p>
                                 </div>
                             </div>
                         </li>
