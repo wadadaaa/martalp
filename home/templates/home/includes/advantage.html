@@ -12,7 +12,8 @@
                 <div class="col-lg-12">
                     <ul class="timeline">
                         {% for advantage_item in advantage_items %}
-                        <li>
+                        {% if forloop.counter|divisibleby:"2" %}
+                        <li class="timeline-inverted">
                             <div class="timeline-image">
                                 {% image advantage_item.image width-400 as image %}
                                 <img class="img-circle img-responsive" src="{{ image.url }}" alt="">
@@ -26,6 +27,22 @@
                                 </div>
                             </div>
                         </li>
+                        {% else %}
+                         <li>
+                            <div class="timeline-image">
+                                {% image advantage_item.image width-400 as image %}
+                                <img class="img-circle img-responsive" src="{{ image.url }}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">{{ advantage_item.caption }}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">{{ advantage_item.description|richtext }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
                         {% endfor %}
                         <li class="timeline-inverted">
                             <div class="timeline-image">
