@@ -1,4 +1,4 @@
-{% load wagtailimages_tags wagtailembeds_tags %}
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags %}
 
     <!-- Services Section -->
     <section id="services">
@@ -19,7 +19,7 @@
                         <i class="{{ service_item.icon }}"></i>
                     </span>
                     <h4 class="service-heading">{{ service_item.caption }}</h4>
-                    <p class="text-muted">{{ service_item.description }}</p>
+                    <p class="text-muted">{{ service_item.description|richtext }}</p>
                 </div>
                             {% endfor %}
 
