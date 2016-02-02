@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Internal server error</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
-    <body>
-        <h1>Internal server error</h1>
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}О нет! Кажется сервер ошибся =({% endblock %}
+{% block content %}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
 
-        <h2>Sorry, there seems to be an error. Please try again soon.</h2>
-    </body>
-</html>
+    <header id="home">
+        <div class="container text-center">
+            <p style="z-index:100;
+               position:absolute;
+               color:white;
+               font-size:36px;
+               font-weight:bold;
+               left:150px;
+               top:350px;">
+                Internal Server Error <br>
+                О нет! Кажется сервер ошибся =( <br>
+                Мы уже предупреждены об этой ошибке.</p>
+            <a href="http://thecatapi.com">
+                <img src="http://thecatapi.com/api/images/get?format=src&type=gif"
+                style="position:absolute;
+                left:0;
+                top:0;
+                width: 100%;
+                height: 100%">
+           </a>
+        </div>
+    </header>
+
+{% endblock %}

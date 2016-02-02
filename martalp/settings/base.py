@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'compressor',
     'taggit',
     'storages',
+    'raven.contrib.django.raven_compat',
+
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,6 +67,9 @@ MIDDLEWARE_CLASSES = [
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+
+    'raven.contrib.django.middleware.Sentry404CatchMiddleware',
+    'raven.contrib.django.middleware.SentryResponseErrorIdMiddleware',
 ]
 
 ROOT_URLCONF = 'martalp.urls'
@@ -107,7 +112,10 @@ DATABASES = {
     }
 }
 
+RAVEN_CONFIG = {
+    'dsn': os.getenv('SENTRY_DSN'),
 
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
