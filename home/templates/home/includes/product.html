@@ -49,20 +49,24 @@
                             <h2>{{ product_item.caption }}</h2>
                             <a href="tel:0549438101" ><button type="button" class="btn btn-xl"><i class="fa fa-phone"></i>  0549438101</button></a>
 
-                            <p class="item-intro text-muted">{{ product_item.caption }}.</p>
+                            <p class="item-intro text-muted">{{ product_item.caption }}</p>
+
                             {% image product_item.image width-400 as product_image %}
                             <img class="img-responsive img-centered" src="{{ product_image.url }}" alt="">
-                            <p>{{ product_item.description|richtext }}</p>
+
                             <div class="row text-center" style="box-shadow: 0px 4px 40px 3px rgba(0, 0, 0, 0.5);">
                                 <div class="embed-responsive embed-responsive-16by9">
                                   <iframe class="embed-responsive-item"  src="{{ product_item.video }}"></iframe>
                                 </div>
                             </div>
+                            <p>{{ product_item.description|richtext }}</p>
+                            <a href="tel:0549438101" ><button type="button" class="btn btn-xl"><i class="fa fa-phone"></i>  0549438101</button></a>
                             <p>
                                 <li><strong>обычная цена<h1>{{ product_item.price }} ₪</h1></strong></li>
                             {% if product_item.sale %}
                                 <li style="color: #e74c3c;"><strong>цена для вас<h1>{{ product_item.sale }} ₪</h1></strong></li>
                             {% endif %}
+                            </p>
                             </ul>
                             <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Закрыть</button>
                         </div>
