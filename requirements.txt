@@ -31,3 +31,4 @@ Unidecode==0.4.19
 wagtail==1.3rc1
 wheel==0.26.0
 Willow==0.2.2
+opbeat

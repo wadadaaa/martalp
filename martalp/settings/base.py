@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'taggit',
     'storages',
     'raven.contrib.django.raven_compat',
-
+    'opbeat.contrib.django',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,6 +70,8 @@ MIDDLEWARE_CLASSES = [
 
     'raven.contrib.django.middleware.Sentry404CatchMiddleware',
     'raven.contrib.django.middleware.SentryResponseErrorIdMiddleware',
+    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+
 ]
 
 ROOT_URLCONF = 'martalp.urls'
@@ -115,6 +117,12 @@ DATABASES = {
 RAVEN_CONFIG = {
     'dsn': os.getenv('SENTRY_DSN'),
 
+}
+
+OPBEAT = {
+    'ORGANIZATION_ID': os.getenv('OPBEAT_ORGANIZATION_ID'),
+    'APP_ID': os.getenv('OPBEAT_APP_ID'),
+    'SECRET_TOKEN': os.getenv('OPBEAT_SECRET_TOKEN'),
 }
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
