@@ -13,14 +13,15 @@
                     <a href="#{{ product_item.id }}" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
+                                <!-- <i class="fa fa-plus fa-3x"></i> -->
+                                <b><h4>нажмите, чтобы узнать подробности</h4></b>
                             </div>
                         </div>
                         {% image product_item.image width-400 as product_image %}
                         <img src="{{ product_image.url }}" class="img-responsive">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>{{ product_item.caption }}</h4>
+                        <h4>{{ product_item.caption }}₪</h4>
                     </div>
                 </div>
                 {% endfor %}
@@ -76,4 +77,3 @@
         </div>
     </div>
 {% endfor %}
-
