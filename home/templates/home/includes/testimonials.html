@@ -1,0 +1,34 @@
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags %}
+
+<!-- Team Section -->
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Отзывы</h2>
+                    <h3 class="section-subheading text-muted">Мы купили мультиварку и хотим рассказать про это.</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for testimonial_item in testimonial_items %}
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        {% image testimonial_item.image width-139 as testimonial_image %}
+                        <img src="{{ testimonial_image.url }}" class="img-responsive img-circle" alt="">
+                        <h4>{{ testimonial_item.caption }}</h4>
+                        <p class="text-muted">{{ testimonial_item.description }}</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="{{ testimonial_item.fb }}"><i class="fa fa-facebook"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Будем рады вашему отзыву.</p>
+                </div>
+            </div>
+        </div>
+    </section>

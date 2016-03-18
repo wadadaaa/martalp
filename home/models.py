@@ -196,6 +196,32 @@ class AdvantageItem(models.Model):
         return self.image
 
 
+# Testimonials item
+
+class TestimonialItem(models.Model):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=255, blank=True)
+    description = RichTextField()
+    fb = models.URLField("Embed video URL", blank=True)
+
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+        FieldPanel('description'),
+        FieldPanel('fb'),
+    ]
+
+    def __unicode__(self):
+        return self.image
+
+
 # Service items
 
 class ServicelItem(LinkFields):
@@ -243,6 +269,10 @@ class HomePageAdvantageItem(Orderable, ProductItem):
     page = ParentalKey('home.HomePage', related_name='advantage_items')
 
 
+class HomePageTestimonialItem(Orderable, TestimonialItem):
+    page = ParentalKey('home.HomePage', related_name='testimonial_items')
+
+
 class HomePageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('home.HomePage', related_name='related_links')
 
@@ -258,6 +288,7 @@ HomePage.content_panels = [
     InlinePanel('service_items', label="Service items"),
     InlinePanel('product_items', label="Product items"),
     InlinePanel('advantage_items', label="Advantage items"),
+    InlinePanel('testimonial_items', label="Testimonial items"),
     InlinePanel('related_links', label="Related links"),
 ]
 
