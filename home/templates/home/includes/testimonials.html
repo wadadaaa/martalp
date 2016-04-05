@@ -16,7 +16,7 @@
                         {% image testimonial_item.image width-139 as testimonial_image %}
                         <img src="{{ testimonial_image.url }}" class="img-responsive img-circle" alt="">
                         <h4>{{ testimonial_item.caption }}</h4>
-                        <p class="text-muted">{{ testimonial_item.description }}</p>
+                        <p class="text-muted">{{ testimonial_item.description|richtext }}</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="{{ testimonial_item.fb }}"><i class="fa fa-facebook"></i></a>
                             </li>
@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Будем рады вашему отзыву.</p>
+                    <p class="large text-muted">Ваш отзыв тоже должен быть здесь.</p>
                 </div>
             </div>
         </div>
