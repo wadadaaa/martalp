@@ -22,7 +22,8 @@
                     </a>
                     <div class="portfolio-caption">
                         <h4>{{ product_item.caption }}
-                            <span class="label label-danger">{{ product_item.sale }}₪</span></h4>
+                            <span class="label label-success">{{ product_item.price }}₪</span></h4>
+                        <button class="btn btn-default orange-circle-button" href="#{{ product_item.id }}" class="portfolio-link" data-toggle="modal"><h4>{{ product_item.sale }}₪</h4><span class="orange-circle-greater-than"></span></button>
                     </div>
                 </div>
                 {% endfor %}
@@ -59,7 +60,7 @@
                         <p>
                                 <li><strong>обычная цена<h1>{{ product_item.price }} ₪</h1></strong></li>
                             {% if product_item.sale %}
-                                <li style="color: #e74c3c;"><strong>цена для вас<h1>{{ product_item.sale }} ₪</h1></strong></li>
+                                <li style="color: #e74c3c;"><strong>цена до Песаха<h1>{{ product_item.sale }} ₪</h1></strong></li>
                             {% endif %}
                             </p>
                             <div class="row text-center" style="box-shadow: 0px 4px 40px 3px rgba(0, 0, 0, 0.5);">
