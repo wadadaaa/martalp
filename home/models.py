@@ -210,7 +210,6 @@ class TestimonialItem(models.Model):
     description = RichTextField()
     fb = models.URLField("Embed video URL", blank=True)
 
-
     panels = [
         ImageChooserPanel('image'),
         FieldPanel('caption'),
@@ -247,6 +246,34 @@ class ServicelItem(LinkFields):
     class Meta:
         abstract = True
 
+
+# Recipes items
+
+class RecipeItem(models.Model):
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=255, blank=True)
+    description = RichTextField()
+    ingredient = RichTextField(blank=True)
+    video = models.URLField("Embed video URL", blank=True)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+        FieldPanel('description'),
+        FieldPanel('ingredient'),
+        FieldPanel('video'),
+    ]
+
+    def __unicode__(self):
+        return self.image
+
+
 # Home Page
 
 class HomePageCarouselItem(Orderable, CarouselItem):
@@ -273,6 +300,10 @@ class HomePageTestimonialItem(Orderable, TestimonialItem):
     page = ParentalKey('home.HomePage', related_name='testimonial_items')
 
 
+class HomePageRecipeItem(Orderable, RecipeItem):
+    page = ParentalKey('home.HomePage', related_name='recipe_items')
+
+
 class HomePageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('home.HomePage', related_name='related_links')
 
@@ -289,6 +320,7 @@ HomePage.content_panels = [
     InlinePanel('product_items', label="Product items"),
     InlinePanel('advantage_items', label="Advantage items"),
     InlinePanel('testimonial_items', label="Testimonial items"),
+    InlinePanel('recipe_items', label="Recipe items"),
     InlinePanel('related_links', label="Related links"),
 ]
 

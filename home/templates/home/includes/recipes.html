@@ -1,0 +1,69 @@
+{% load wagtailimages_tags wagtailembeds_tags wagtailcore_tags %}
+    <section id="recipes" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Видео рецепты</h2>
+                    <h3 class="section-subheading text-muted">Что можно приготовить в мультиварке?</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for recipe_item in recipe_items %}
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#{{ recipe_item.id }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                            </div>
+                        </div>
+                        {% image recipe_item.image width-400 as recipe_image %}
+                        <img src="{{ recipe_image.url }}" class="img-responsive">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ recipe_item.caption }}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% for recipe_item in recipe_items %}
+
+  <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal modal fade" id="{{ recipe_item.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>{{ recipe_item.caption }}</h2>
+                            <p class="item-intro text-muted">{{ recipe_item.caption }}</p>
+
+                            {% image recipe_item.image width-400 as recipe_image %}
+{#                            <img class="img-responsive img-centered" src="{{ recipe_image.url }}" alt="">#}
+                        <br>
+                            <div class="row text-center" style="box-shadow: 0px 4px 40px 3px rgba(0, 0, 0, 0.5);">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                  <iframe class="embed-responsive-item"  src="{{ recipe_item.video }}"></iframe>
+                                </div>
+                            </div>
+                            <p>{{ recipe_item.description|richtext }}</p>
+                            <p>{{ recipe_item.ingredient|richtext }}</p>
+                            </ul>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
